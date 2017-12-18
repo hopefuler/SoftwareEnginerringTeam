@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="startislands.team3.softwareenginerringteam.MainActivity">
+    tools:context="startislands.team3.softwareenginerringteam.SelectPaymentActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +20,6 @@
             android:background="#ffffdd"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="5dp">
-
-
             <Button
                 android:id="@+id/order_btn"
                 android:layout_width="120dp"
@@ -69,12 +67,6 @@
                 android:text="가격"
                 android:gravity="center"
                 android:textColor="#000000"/>
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="추가하기"
-                android:gravity="center"
-                android:textColor="#000000"/>
         </LinearLayout>
 
         <LinearLayout
@@ -100,20 +92,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_01"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_01"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -139,20 +117,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_02"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_02"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -178,20 +142,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_03"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_03"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -217,20 +167,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_04"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_04"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -256,20 +192,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_05"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_05"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -295,20 +217,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_06"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_06"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -333,21 +241,7 @@
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_07"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_07"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
+                android:gravity="center"/>/>
         </LinearLayout>
 
         <LinearLayout
@@ -373,20 +267,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_08"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_08"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -412,20 +292,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_09"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_09"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
@@ -451,20 +317,6 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"/>
-            <Button
-                android:id="@+id/BT_plus_10"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="10dp"
-                android:onClick="countAdjustClick"/>
-            <Button
-                android:id="@+id/BT_minus_10"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:text="-"
-                android:onClick="countAdjustClick"/>
         </LinearLayout>
 
         <LinearLayout
