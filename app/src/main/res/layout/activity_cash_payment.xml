@@ -1,9 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="startislands.team3.softwareenginerringteam.CashPaymentActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="#ffffdd"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp">
+
+
+            <Button
+                android:id="@+id/order_btn"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="주문하기창"
+                android:onClick="topButtonClick"/>
+
+            <Button
+                android:id="@+id/list_btn"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="거래내역창"
+                android:onClick="topButtonClick"/>
+
+            <Button
+                android:id="@+id/adjust_btn"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="상품관리창"
+                android:onClick="topButtonClick"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주문 총액 :  "
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:paddingRight="10dp"/>
+            <TextView
+                android:id="@+id/TV_totalPrice"
+                android:paddingLeft="20dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="right"/>
+            <TextView
+                android:paddingRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="원"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="받은 금액 :  "
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:paddingRight="10dp"/>
+            <EditText
+                android:inputType="number"
+                android:id="@+id/ET_receivePrice"
+                android:paddingLeft="20dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:gravity="right"/>
+            <TextView
+                android:paddingRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="원"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:paddingBottom="50dp"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="거스름돈 :  "
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:paddingRight="10dp"/>
+            <TextView
+                android:id="@+id/TV_exchagePrice"
+                android:paddingLeft="20dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="right"/>
+            <TextView
+                android:paddingRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="원"
+                android:gravity="center"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/payment_cash_btn"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:text="결제 완료"
+            android:onClick="paymentSubmitClick"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".SelectPaymentActivity" />
         <activity android:name=".CashPaymentActivity" />
-        <activity android:name=".CardPaymentActivity"></activity>
+        <activity android:name=".CardPaymentActivity" />
+        <activity android:name=".SignActivity"></activity>
     </application>
 
 </manifest>

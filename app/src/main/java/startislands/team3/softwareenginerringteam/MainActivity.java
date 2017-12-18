@@ -7,8 +7,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
+    // 주문 내용
     int menu_count_01= 0;
     int menu_count_02= 0;
     int menu_count_03= 0;
@@ -31,16 +35,21 @@ public class MainActivity extends AppCompatActivity {
     int menu_price_09= 0;
     int menu_price_10= 0;
 
-    int menu_total_price=0;
+    String PAYMENT_centext; // 주문 내용
+    int PAYMENT_number = 0 ; // 주문 번호 -> db에서 유동적으로 변화시키기
+    String PAYMENT_date; // 주문 일자
+    int PAYMENT_total_price = 0; // 주문 총액
+    String PAYMENT_time; // 주문 시간
+
+    long now;
+    Date date;
+    SimpleDateFormat sdfNowDate;
+    SimpleDateFormat sdfNowTime ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
     }
 
     public void topButtonClick(View v) {
@@ -60,17 +69,45 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void orderSubmitClick(View v) {
+    public void orderSubmitClick(View v) {  // 주문 버튼
+        orderSubmit(v); // 주문 접수
+    }
+
+    public void orderSubmit(View v){ // 주문 접수
+        now = System.currentTimeMillis();
+        date = new Date(now);
+        sdfNowDate = new SimpleDateFormat("yyyy/MM/dd");
+        sdfNowTime = new SimpleDateFormat("HH:mm:ss");
+
         switch (v.getId()) {
             case R.id.order_submit_btn: // 결제창으로 이동
-                startActivity(new Intent(MainActivity.this, SelectPaymentActivity.class));
+
+                PAYMENT_centext = (menu_price_01+"n") + (menu_price_02+"n") + (menu_price_03+"n") + (menu_price_04+"n") + (menu_price_05+"n")
+                        + (menu_price_06+"n") + (menu_price_07+"n") + (menu_price_08+"n") + (menu_price_09+"n") + (menu_price_10+"n");
+
+                PAYMENT_date = sdfNowDate.format(date);
+                PAYMENT_time = sdfNowTime.format(date);
+
+                Intent intent = new Intent(MainActivity.this, SelectPaymentActivity.class);
+                intent.putExtra("PAYMENT_centext",PAYMENT_centext); // 주문 내용
+                intent.putExtra("PAYMENT_number",PAYMENT_number+""); // 주문 번호
+                intent.putExtra("PAYMENT_date",PAYMENT_date); // 주문 일자
+                intent.putExtra("PAYMENT_total_price",PAYMENT_total_price+""); // 주문 총액
+                intent.putExtra("PAYMENT_time",PAYMENT_time); // 주문 시간
+
+                // 주문번호 ++ 해서 DB 저장하기.
+
+                startActivity(intent);
                 finish();
                 break;
         }
     }
 
-    public void countAdjustClick(View v) {
+    public void countAdjustClick(View v) { // 수정 버튼
+        orderAdjust(v); // 주문수정
+    }
 
+    public void orderAdjust(View v){ // 주문 수정
         TextView TV_order_count_01 = (TextView)findViewById(R.id.TV_order_count_01);
         TextView TV_order_count_02 = (TextView)findViewById(R.id.TV_order_count_02);
         TextView TV_order_count_03 = (TextView)findViewById(R.id.TV_order_count_03);
@@ -116,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BT_plus_02:
                 menu_count_02 += 1;
                 TV_order_count_02.setText(menu_count_02+"");
-                menu_price_02 += 2000;
+                menu_price_02 += 2800;
                 TV_order_price_02.setText(menu_price_02+"");
                 break;
             case R.id.BT_minus_02:
@@ -125,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_02 -= 1;
                     TV_order_count_02.setText(menu_count_02+"");
-                    menu_price_02 -= 2000;
+                    menu_price_02 -= 2800;
                     TV_order_price_02.setText(menu_price_02+"");
                 }
                 break;
@@ -133,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BT_plus_03:
                 menu_count_03 += 1;
                 TV_order_count_03.setText(menu_count_03+"");
-                menu_price_03 += 2000;
+                menu_price_03 += 2300;
                 TV_order_price_03.setText(menu_price_03+"");
                 break;
             case R.id.BT_minus_03:
@@ -142,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_03 -= 1;
                     TV_order_count_03.setText(menu_count_03+"");
-                    menu_price_03 -= 2000;
+                    menu_price_03 -= 2300;
                     TV_order_price_03.setText(menu_price_03+"");
                 }
                 break;
@@ -150,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BT_plus_04:
                 menu_count_04 += 1;
                 TV_order_count_04.setText(menu_count_04+"");
-                menu_price_04 += 2000;
+                menu_price_04 += 2500;
                 TV_order_price_04.setText(menu_price_04+"");
                 break;
             case R.id.BT_minus_04:
@@ -159,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_04 -= 1;
                     TV_order_count_04.setText(menu_count_04+"");
-                    menu_price_04 -= 2000;
+                    menu_price_04 -= 2500;
                     TV_order_price_04.setText(menu_price_04+"");
                 }
                 break;
@@ -167,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BT_plus_05:
                 menu_count_05 += 1;
                 TV_order_count_05.setText(menu_count_05+"");
-                menu_price_05 += 2000;
+                menu_price_05 += 2500;
                 TV_order_price_05.setText(menu_price_05+"");
                 break;
             case R.id.BT_minus_05:
@@ -176,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_05 -= 1;
                     TV_order_count_05.setText(menu_count_05+"");
-                    menu_price_05 -= 2000;
+                    menu_price_05 -= 2500;
                     TV_order_price_05.setText(menu_price_05+"");
                 }
                 break;
@@ -184,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BT_plus_06:
                 menu_count_06 += 1;
                 TV_order_count_06.setText(menu_count_06+"");
-                menu_price_06 += 2000;
+                menu_price_06 += 3500;
                 TV_order_price_06.setText(menu_price_06+"");
                 break;
             case R.id.BT_minus_06:
@@ -193,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_06 -= 1;
                     TV_order_count_06.setText(menu_count_06+"");
-                    menu_price_06 -= 2000;
+                    menu_price_06 -= 3500;
                     TV_order_price_06.setText(menu_price_06+"");
                 }
                 break;
@@ -201,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BT_plus_07:
                 menu_count_07 += 1;
                 TV_order_count_07.setText(menu_count_07+"");
-                menu_price_07 += 2000;
+                menu_price_07 += 3500;
                 TV_order_price_07.setText(menu_price_07+"");
                 break;
             case R.id.BT_minus_07:
@@ -210,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_07 -= 1;
                     TV_order_count_07.setText(menu_count_07+"");
-                    menu_price_07 -= 2000;
+                    menu_price_07 -= 3500;
                     TV_order_price_07.setText(menu_price_07+"");
                 }
                 break;
@@ -218,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BT_plus_08:
                 menu_count_08 += 1;
                 TV_order_count_08.setText(menu_count_08+"");
-                menu_price_08 += 2000;
+                menu_price_08 += 3800;
                 TV_order_price_08.setText(menu_price_08+"");
                 break;
             case R.id.BT_minus_08:
@@ -227,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_08 -= 1;
                     TV_order_count_08.setText(menu_count_08+"");
-                    menu_price_08 -= 2000;
+                    menu_price_08 -= 3800;
                     TV_order_price_08.setText(menu_price_08+"");
                 }
                 break;
@@ -235,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BT_plus_09:
                 menu_count_09 += 1;
                 TV_order_count_09.setText(menu_count_09+"");
-                menu_price_09 += 2000;
+                menu_price_09 += 500;
                 TV_order_price_09.setText(menu_price_09+"");
                 break;
             case R.id.BT_minus_09:
@@ -244,15 +281,15 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_09 -= 1;
                     TV_order_count_09.setText(menu_count_09+"");
-                    menu_price_09 -= 2000;
+                    menu_price_09 -= 500;
                     TV_order_price_09.setText(menu_price_09+"");
                 }
                 break;
 
             case R.id.BT_plus_10:
                 menu_count_10 += 1;
-                TV_order_count_05.setText(menu_count_10+"");
-                menu_price_10 += 2000;
+                TV_order_count_10.setText(menu_count_10+"");
+                menu_price_10 += 500;
                 TV_order_price_10.setText(menu_price_10+"");
                 break;
             case R.id.BT_minus_10:
@@ -261,16 +298,16 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     menu_count_10 -= 1;
                     TV_order_count_10.setText(menu_count_10+"");
-                    menu_price_10 -= 2000;
+                    menu_price_10 -= 500;
                     TV_order_price_10.setText(menu_price_10+"");
                 }
                 break;
         }
 
-        menu_total_price = menu_price_01 + menu_price_02 + menu_price_03 + menu_price_04 + menu_price_05 + menu_price_06
+        PAYMENT_total_price = menu_price_01 + menu_price_02 + menu_price_03 + menu_price_04 + menu_price_05 + menu_price_06
                 + menu_price_07 + menu_price_08 + menu_price_09 + menu_price_10;
 
-        TV_totalPrice.setText(menu_total_price+"");
+        TV_totalPrice.setText(PAYMENT_total_price+"");
 
     }
 }
