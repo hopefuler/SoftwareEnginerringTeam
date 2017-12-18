@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
     public void orderSubmitClick(View v) {
         switch (v.getId()) {
             case R.id.order_submit_btn: // 결제창으로 이동
-
-
+                startActivity(new Intent(MainActivity.this, SelectPaymentActivity.class));
+                finish();
                 break;
         }
     }
