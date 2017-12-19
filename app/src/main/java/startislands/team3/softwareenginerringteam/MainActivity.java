@@ -279,10 +279,14 @@ public class MainActivity extends AppCompatActivity {
 
         switch (v.getId()) {
             case R.id.BT_plus_01:
-                menu_count_01 += 1;
-                TV_order_count_01.setText(menu_count_01+"");
-                menu_price_01 += 2000;
-                TV_order_price_01.setText(menu_price_01+"");
+                if(menu_able_count_01>menu_count_01) {
+                    menu_count_01 += 1;
+                    TV_order_count_01.setText(menu_count_01 + "");
+                    menu_price_01 += 2000;
+                    TV_order_price_01.setText(menu_price_01 + "");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_01:
                 if(menu_count_01<1)
@@ -296,10 +300,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_02:
-                menu_count_02 += 1;
-                TV_order_count_02.setText(menu_count_02+"");
-                menu_price_02 += 2800;
-                TV_order_price_02.setText(menu_price_02+"");
+                if(menu_able_count_02>menu_count_02) {
+                    menu_count_02 += 1;
+                    TV_order_count_02.setText(menu_count_02+"");
+                    menu_price_02 += 2800;
+                    TV_order_price_02.setText(menu_price_02+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_02:
                 if(menu_count_02<1)
@@ -313,10 +321,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_03:
-                menu_count_03 += 1;
-                TV_order_count_03.setText(menu_count_03+"");
-                menu_price_03 += 2300;
-                TV_order_price_03.setText(menu_price_03+"");
+                if(menu_able_count_03>menu_count_03) {
+                    menu_count_03 += 1;
+                    TV_order_count_03.setText(menu_count_03+"");
+                    menu_price_03 += 2300;
+                    TV_order_price_03.setText(menu_price_03+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_03:
                 if(menu_count_03<1)
@@ -330,10 +342,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_04:
-                menu_count_04 += 1;
-                TV_order_count_04.setText(menu_count_04+"");
-                menu_price_04 += 2500;
-                TV_order_price_04.setText(menu_price_04+"");
+                if(menu_able_count_04>menu_count_04) {
+                    menu_count_04 += 1;
+                    TV_order_count_04.setText(menu_count_04+"");
+                    menu_price_04 += 2500;
+                    TV_order_price_04.setText(menu_price_04+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_04:
                 if(menu_count_04<1)
@@ -347,10 +363,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_05:
-                menu_count_05 += 1;
-                TV_order_count_05.setText(menu_count_05+"");
-                menu_price_05 += 2500;
-                TV_order_price_05.setText(menu_price_05+"");
+                if(menu_able_count_05>menu_count_05) {
+                    menu_count_05 += 1;
+                    TV_order_count_05.setText(menu_count_05+"");
+                    menu_price_05 += 2500;
+                    TV_order_price_05.setText(menu_price_05+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_05:
                 if(menu_count_05<1)
@@ -364,10 +384,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_06:
-                menu_count_06 += 1;
-                TV_order_count_06.setText(menu_count_06+"");
-                menu_price_06 += 3500;
-                TV_order_price_06.setText(menu_price_06+"");
+                if(menu_able_count_06>menu_count_06) {
+                    menu_count_06 += 1;
+                    TV_order_count_06.setText(menu_count_06+"");
+                    menu_price_06 += 3500;
+                    TV_order_price_06.setText(menu_price_06+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_06:
                 if(menu_count_06<1)
@@ -381,10 +405,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_07:
-                menu_count_07 += 1;
-                TV_order_count_07.setText(menu_count_07+"");
-                menu_price_07 += 3500;
-                TV_order_price_07.setText(menu_price_07+"");
+                if(menu_able_count_07>menu_count_07) {
+                    menu_count_07 += 1;
+                    TV_order_count_07.setText(menu_count_07+"");
+                    menu_price_07 += 3500;
+                    TV_order_price_07.setText(menu_price_07+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_07:
                 if(menu_count_07<1)
@@ -398,10 +426,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_08:
-                menu_count_08 += 1;
-                TV_order_count_08.setText(menu_count_08+"");
-                menu_price_08 += 3800;
-                TV_order_price_08.setText(menu_price_08+"");
+                if(menu_able_count_08>menu_count_08) {
+                    menu_count_08 += 1;
+                    TV_order_count_08.setText(menu_count_08+"");
+                    menu_price_08 += 3800;
+                    TV_order_price_08.setText(menu_price_08+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_08:
                 if(menu_count_08<1)
@@ -415,10 +447,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_09:
-                menu_count_09 += 1;
-                TV_order_count_09.setText(menu_count_09+"");
-                menu_price_09 += 500;
-                TV_order_price_09.setText(menu_price_09+"");
+                if(menu_able_count_09>menu_count_09) {
+                    menu_count_09 += 1;
+                    TV_order_count_09.setText(menu_count_09+"");
+                    menu_price_09 += 500;
+                    TV_order_price_09.setText(menu_price_09+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_09:
                 if(menu_count_09<1)
@@ -432,10 +468,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_10:
-                menu_count_10 += 1;
-                TV_order_count_10.setText(menu_count_10+"");
-                menu_price_10 += 500;
-                TV_order_price_10.setText(menu_price_10+"");
+                if(menu_able_count_10>menu_count_10) {
+                    menu_count_10 += 1;
+                    TV_order_count_10.setText(menu_count_10+"");
+                    menu_price_10 += 500;
+                    TV_order_price_10.setText(menu_price_10+"");
+                }else{
+                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BT_minus_10:
                 if(menu_count_10<1)
