@@ -62,11 +62,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.list_btn: // 거래내역 창
                 startActivity(new Intent(MainActivity.this, PaymentListInfoActivity.class));
-                finish();
+
                 break;
             case R.id.adjust_btn: // 상품관리 창
                 startActivity(new Intent(MainActivity.this, productAdjustActivity.class));
-                finish();
+
                 break;
         }
     }

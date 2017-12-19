@@ -1,6 +1,7 @@
 package startislands.team3.softwareenginerringteam;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,14 +9,20 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 public class PaymentListInfoActivity extends AppCompatActivity {
 
     String PAYMENT_time; // 거래 시간
     String PAYMENT_method; // 거래 방식
-    String PAYMENT_centext=""; // 거래 내용
+    JSONObject PAYMENT_centext;// 거래 내용
     String PAYMENT_date; // 거래 날짜
     String PAYMENT_number; // 거래 일련번호
     String PAYMENT_total_price; // 거래 총액
+    String PAYMENT_sale_price;
 
     MyAdapter MyAdapter;
     private ListView mListView;
@@ -42,10 +49,7 @@ public class PaymentListInfoActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent1, View view, int position, long id) {
 
-                detailListView(); // 거래내역 조회 ; 이 함수를 호출 할 것. - 클래스 다이어그램
-
-                Toast.makeText(PaymentListInfoActivity.this, position+"번 리스트 뷰", Toast.LENGTH_SHORT).show();
-
+                detailListView(position); // 거래내역 조회 ; 이 함수를 호출 할 것. - 클래스 다이어그램
 
 
 
@@ -74,33 +78,35 @@ public class PaymentListInfoActivity extends AppCompatActivity {
 
     public void setListView(){ // 거래내역 상세조회
 
-        PAYMENT_time = "20:28:59";
-        PAYMENT_method = "현금 결제";
-        PAYMENT_total_price = "2000";
-        PAYMENT_date = "2017/12/12";
-        PAYMENT_number = "20171212001";
-        MyAdapter.addItem(PAYMENT_number, PAYMENT_date, PAYMENT_time, PAYMENT_method, PAYMENT_total_price);
+        SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
+        int transactionListCount = Integer.parseInt(pref.getString("count","0"));
 
-        PAYMENT_time = "22:42:01";
-        PAYMENT_method = "카드 결제";
-        PAYMENT_total_price = "7500";
-        PAYMENT_date = "2017/12/12";
-        PAYMENT_number = "20171212002";
-        MyAdapter.addItem(PAYMENT_number, PAYMENT_date, PAYMENT_time, PAYMENT_method, PAYMENT_total_price);
 
+        for(int i=0;i<transactionListCount;i++){
+            String JSONString = pref.getString(String.valueOf(i),"");
+
+            try {
+                PAYMENT_centext = new JSONObject(JSONString);
+                PAYMENT_time = PAYMENT_centext.getString("PAYMENT_time");
+                PAYMENT_method = PAYMENT_centext.getString("PAYMENT_method");
+                PAYMENT_total_price = PAYMENT_centext.getString("PAYMENT_total_price");
+                PAYMENT_date = PAYMENT_centext.getString("PAYMENT_date");
+                PAYMENT_number =PAYMENT_centext.getString("PAYMENT_number");
+                PAYMENT_sale_price =PAYMENT_centext.getString("PAYMENT_sale_price");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            MyAdapter.addItem(PAYMENT_number, PAYMENT_date, PAYMENT_time, PAYMENT_method, Integer.parseInt(PAYMENT_total_price)-Integer.parseInt(PAYMENT_sale_price)+"");
+        }
         mListView.setAdapter(MyAdapter);
     }
 
-    public void detailListView(){ // 거래내역 상세조회
+    public void detailListView(int PAYMENT_number){ // 거래내역 상세조회
         Intent intent = new Intent(PaymentListInfoActivity.this, PaymentDetailInfoActivity.class);
 
-        intent.putExtra("PAYMENT_centext",PAYMENT_centext);
-        intent.putExtra("PAYMENT_time",PAYMENT_time);
-        intent.putExtra("PAYMENT_method",PAYMENT_method);
-        intent.putExtra("PAYMENT_total_price",PAYMENT_total_price);
-        intent.putExtra("PAYMENT_date",PAYMENT_date);
-        intent.putExtra("PAYMENT_number",PAYMENT_number);
+        intent.putExtra("PAYMENT_number",PAYMENT_number+"");
         startActivity(intent);
-        finish();
     }
 }
