@@ -13,6 +13,8 @@ public class CheckCheck extends AppCompatActivity {
     Button checkBackBtn, checkBtn;
     TextView checkResultTV;
     EditText checkEditBtn;
+
+    String checkNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,14 +24,12 @@ public class CheckCheck extends AppCompatActivity {
         checkBackBtn = (Button)findViewById(R.id.checkBackBtn);
         checkBtn = (Button)findViewById(R.id.checkBtn);
 
+
+
         checkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkEditBtn.getText().length()!=8){
-                    checkResultTV.setText("일련번호 8자리를 입력해주세요.");
-                }else{
-                    checkResultTV.setText("정상 수표입니다.");
-                }
+                checkCheck();
             }
         });
 
@@ -40,6 +40,14 @@ public class CheckCheck extends AppCompatActivity {
             }
         });
 
+    }
+    public void checkCheck(){
+        checkNumber=checkEditBtn.getText().toString();
+        if(checkNumber.length()!=8){
+            checkResultTV.setText("일련번호 8자리를 입력해주세요.");
+        }else{
+            checkResultTV.setText("정상 수표입니다.");
+        }
     }
 
 }
