@@ -112,6 +112,14 @@ public class MainActivity extends AppCompatActivity {
 
                 startActivity(intent);
                 //finish();
+
+                for(int i=0; i<10 ; i++){
+                    TextView order_count = (TextView)findViewById(R.id.TV_order_count_01+i);
+                    order_count.setText("0");
+                    TextView order_price = (TextView)findViewById(R.id.TV_order_price_01+i);
+                    order_price.setText("0");
+                }
+
                 break;
         }
     }

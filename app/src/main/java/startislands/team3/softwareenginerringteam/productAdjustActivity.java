@@ -325,10 +325,12 @@ public class productAdjustActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             String msg="";
 
-            if (dayOfMonth<10){
-                String dayOfMonth_str = "0"+dayOfMonth;
-                msg = String.format("%d/%d/%s", year,monthOfYear+1, dayOfMonth_str);
-            }
+            if (dayOfMonth<10 && monthOfYear+1<10)
+                msg = String.format("%d/0%d/0%d", year,monthOfYear+1, dayOfMonth);
+            else if (dayOfMonth<10 && monthOfYear+1>=10)
+                msg = String.format("%d/%d/0%d", year,monthOfYear+1, dayOfMonth);
+            else if (dayOfMonth>=10 && monthOfYear+1<10)
+                msg = String.format("%d/0%d/%d", year,monthOfYear+1, dayOfMonth);
             else
                 msg = String.format("%d/%d/%d", year,monthOfYear+1, dayOfMonth);
 
