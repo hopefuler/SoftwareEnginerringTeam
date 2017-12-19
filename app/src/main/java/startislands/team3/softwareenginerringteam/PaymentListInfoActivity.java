@@ -108,5 +108,6 @@ public class PaymentListInfoActivity extends AppCompatActivity {
 
         intent.putExtra("PAYMENT_number",PAYMENT_number+"");
         startActivity(intent);
+        finish();
     }
 }
