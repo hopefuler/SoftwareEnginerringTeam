@@ -324,11 +324,14 @@ public class productAdjustActivity extends AppCompatActivity {
         public void onDateSet(DatePicker view, int year, int monthOfYear,int dayOfMonth) {
             // TODO Auto-generated method stub
             String msg="";
+
             if (dayOfMonth<10){
                 String dayOfMonth_str = "0"+dayOfMonth;
                 msg = String.format("%d/%d/%s", year,monthOfYear+1, dayOfMonth_str);
             }
-            msg = String.format("%d/%d/%d", year,monthOfYear+1, dayOfMonth);
+            else
+                msg = String.format("%d/%d/%d", year,monthOfYear+1, dayOfMonth);
+
             AdjustBtn.setText(msg);
         }
     };
