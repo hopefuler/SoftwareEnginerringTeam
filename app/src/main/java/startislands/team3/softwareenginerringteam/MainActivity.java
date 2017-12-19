@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     int menu_price_09= 0;
     int menu_price_10= 0;
 
-    String PAYMENT_centext; // 주문 내용
+    int PAYMENT_centext[]; // 주문 내용
     int PAYMENT_number = 0 ; // 주문 번호 -> db에서 유동적으로 변화시키기
     String PAYMENT_date; // 주문 일자
     int PAYMENT_total_price = 0; // 주문 총액
@@ -82,8 +82,19 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.order_submit_btn: // 결제창으로 이동
 
-                PAYMENT_centext = (menu_price_01+"n") + (menu_price_02+"n") + (menu_price_03+"n") + (menu_price_04+"n") + (menu_price_05+"n")
-                        + (menu_price_06+"n") + (menu_price_07+"n") + (menu_price_08+"n") + (menu_price_09+"n") + (menu_price_10+"n");
+                PAYMENT_centext = new int[10];
+                PAYMENT_centext[0]=menu_count_01;
+                PAYMENT_centext[1]=menu_count_02;
+                PAYMENT_centext[2]=menu_count_03;
+                PAYMENT_centext[3]=menu_count_04;
+                PAYMENT_centext[4]=menu_count_05;
+                PAYMENT_centext[5]=menu_count_06;
+                PAYMENT_centext[6]=menu_count_07;
+                PAYMENT_centext[7]=menu_count_08;
+                PAYMENT_centext[8]=menu_count_09;
+                PAYMENT_centext[9]=menu_count_10;
+
+
 
                 PAYMENT_date = sdfNowDate.format(date);
                 PAYMENT_time = sdfNowTime.format(date);
@@ -98,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 // 주문번호 ++ 해서 DB 저장하기.
 
                 startActivity(intent);
-                finish();
+                //finish();
                 break;
         }
     }

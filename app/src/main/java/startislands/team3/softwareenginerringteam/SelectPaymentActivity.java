@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class SelectPaymentActivity extends AppCompatActivity {
 
-    String PAYMENT_centext; // 주문 내용
+    int[] PAYMENT_centext; // 주문 내용  -- 추후에 이 객체를 가져오면될듯
     String PAYMENT_number; // 주문 번호 -> db에서 유동적으로 변화시키기
     String PAYMENT_date; // 주문 일자
     String PAYMENT_total_price; // 주문 총액
@@ -24,7 +24,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_payment);
 
         Intent intent = getIntent();
-        PAYMENT_centext = intent.getExtras().getString("PAYMENT_centext"); // 주문 내용
+        PAYMENT_centext = intent.getExtras().getIntArray("PAYMENT_centext"); // 주문 내용
         PAYMENT_number = intent.getExtras().getString("PAYMENT_number"); // 주문 번호 -> db에서 유동적으로 변화시키기
         PAYMENT_date = intent.getExtras().getString("PAYMENT_date"); // 주문 일자
         PAYMENT_total_price = intent.getExtras().getString("PAYMENT_total_price"); // 주문 총액
@@ -32,6 +32,50 @@ public class SelectPaymentActivity extends AppCompatActivity {
 
         TextView TV_totalPrice = (TextView)findViewById(R.id.TV_totalPrice);
         TV_totalPrice.setText(PAYMENT_total_price+"");
+
+        TextView TV_order_count_01 = (TextView)findViewById(R.id.TV_order_count_01);
+        TextView TV_order_count_02 = (TextView)findViewById(R.id.TV_order_count_02);
+        TextView TV_order_count_03 = (TextView)findViewById(R.id.TV_order_count_03);
+        TextView TV_order_count_04 = (TextView)findViewById(R.id.TV_order_count_04);
+        TextView TV_order_count_05 = (TextView)findViewById(R.id.TV_order_count_05);
+        TextView TV_order_count_06 = (TextView)findViewById(R.id.TV_order_count_06);
+        TextView TV_order_count_07 = (TextView)findViewById(R.id.TV_order_count_07);
+        TextView TV_order_count_08 = (TextView)findViewById(R.id.TV_order_count_08);
+        TextView TV_order_count_09 = (TextView)findViewById(R.id.TV_order_count_09);
+        TextView TV_order_count_10 = (TextView)findViewById(R.id.TV_order_count_10);
+
+        TextView TV_order_price_01 = (TextView)findViewById(R.id.TV_order_price_01);
+        TextView TV_order_price_02 = (TextView)findViewById(R.id.TV_order_price_02);
+        TextView TV_order_price_03 = (TextView)findViewById(R.id.TV_order_price_03);
+        TextView TV_order_price_04 = (TextView)findViewById(R.id.TV_order_price_04);
+        TextView TV_order_price_05 = (TextView)findViewById(R.id.TV_order_price_05);
+        TextView TV_order_price_06 = (TextView)findViewById(R.id.TV_order_price_06);
+        TextView TV_order_price_07 = (TextView)findViewById(R.id.TV_order_price_07);
+        TextView TV_order_price_08 = (TextView)findViewById(R.id.TV_order_price_08);
+        TextView TV_order_price_09 = (TextView)findViewById(R.id.TV_order_price_09);
+        TextView TV_order_price_10 = (TextView)findViewById(R.id.TV_order_price_10);
+
+        TV_order_count_01.setText(String.valueOf(PAYMENT_centext[0]));
+        TV_order_count_02.setText(String.valueOf(PAYMENT_centext[1]));
+        TV_order_count_03.setText(String.valueOf(PAYMENT_centext[2]));
+        TV_order_count_04.setText(String.valueOf(PAYMENT_centext[3]));
+        TV_order_count_05.setText(String.valueOf(PAYMENT_centext[4]));
+        TV_order_count_06.setText(String.valueOf(PAYMENT_centext[5]));
+        TV_order_count_07.setText(String.valueOf(PAYMENT_centext[6]));
+        TV_order_count_08.setText(String.valueOf(PAYMENT_centext[7]));
+        TV_order_count_09.setText(String.valueOf(PAYMENT_centext[8]));
+        TV_order_count_10.setText(String.valueOf(PAYMENT_centext[9]));
+
+        TV_order_price_01.setText(String.valueOf(PAYMENT_centext[0]*2000));
+        TV_order_price_02.setText(String.valueOf(PAYMENT_centext[1]*2800));
+        TV_order_price_03.setText(String.valueOf(PAYMENT_centext[2]*2300));
+        TV_order_price_04.setText(String.valueOf(PAYMENT_centext[3]*2500));
+        TV_order_price_05.setText(String.valueOf(PAYMENT_centext[4]*2500));
+        TV_order_price_06.setText(String.valueOf(PAYMENT_centext[5]*3500));
+        TV_order_price_07.setText(String.valueOf(PAYMENT_centext[6]*3500));
+        TV_order_price_08.setText(String.valueOf(PAYMENT_centext[7]*3800));
+        TV_order_price_09.setText(String.valueOf(PAYMENT_centext[8]*500));
+        TV_order_price_10.setText(String.valueOf(PAYMENT_centext[9]*500));
     }
 
     public void topButtonClick(View v) {
