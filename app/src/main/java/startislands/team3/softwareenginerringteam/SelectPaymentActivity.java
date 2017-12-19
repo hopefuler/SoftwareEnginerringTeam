@@ -158,7 +158,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
                 PAYMENT_method="카드";
                 intent = new Intent(SelectPaymentActivity.this, CardPaymentActivity.class);
                 intent.putExtra("PAYMENT_total_price",Integer.parseInt(PAYMENT_total_price)-Integer.parseInt(PAYMENT_sale_price)+""); // 주문 내용
-                startActivity(intent);
+                startActivityForResult(intent,CARD_PAYMENT);
 
                 break;
             case R.id.payment_cheque_btn: // 수표
@@ -181,7 +181,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
                     SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
 
-                    int transactionCount=Integer.parseInt(pref.getString("transactionCount", "0"));
+                    int transactionCount=Integer.parseInt(pref.getString("count", "0"));
                     PAYMENT_number=transactionCount+"";
 
                     JSONObject transaction = new JSONObject();
@@ -208,7 +208,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
                     }
                     transactionCount++;
 
-                    editor.putString("count", PAYMENT_number);
+                    editor.putString("count", transactionCount+"");
                     editor.putString(PAYMENT_number, transaction.toString());
                     editor.commit();
                     finish();
@@ -219,12 +219,13 @@ public class SelectPaymentActivity extends AppCompatActivity {
                 PAYMENT_sale_price = data.getExtras().getString("PAYMENT_sale_price");
                 TV_totalPrice.setText(Integer.parseInt(PAYMENT_total_price)-Integer.parseInt(PAYMENT_sale_price)+"");
 
-            }else if(resultCode==CARD_PAYMENT){
+            }else if(requestCode==CARD_PAYMENT){
                 SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
 
-                int transactionCount=Integer.parseInt(pref.getString("transactionCount", "0"));
+                int transactionCount=Integer.parseInt(pref.getString("count", "0"));
                 PAYMENT_number=transactionCount+"";
+
 
                 JSONObject transaction = new JSONObject();
                 try {
@@ -249,7 +250,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 transactionCount++;
-                editor.putString("count", PAYMENT_number);
+                editor.putString("count", transactionCount+"");
                 editor.putString(PAYMENT_number, transaction.toString());
                 editor.commit();
                 finish();
