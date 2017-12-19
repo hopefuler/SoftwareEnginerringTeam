@@ -51,6 +51,18 @@ public class SelectPaymentActivity extends AppCompatActivity {
     TextView TV_order_price_10;
 
     TextView TV_totalPrice;
+
+    int menu_able_count_01= 0;
+    int menu_able_count_02= 0;
+    int menu_able_count_03= 0;
+    int menu_able_count_04= 0;
+    int menu_able_count_05= 0;
+    int menu_able_count_06= 0;
+    int menu_able_count_07= 0;
+    int menu_able_count_08= 0;
+    int menu_able_count_09= 0;
+    int menu_able_count_10= 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,6 +223,47 @@ public class SelectPaymentActivity extends AppCompatActivity {
                     editor.putString("count", transactionCount+"");
                     editor.putString(PAYMENT_number, transaction.toString());
                     editor.commit();
+
+
+                    SharedPreferences pref2 = getSharedPreferences("goodsList", MODE_PRIVATE);
+                    SharedPreferences.Editor editor2 = pref2.edit();
+
+                    String StringGoodsList = pref2.getString("goodsList","");
+
+
+                    try {
+                        JSONObject goodsList = new JSONObject(StringGoodsList);
+
+                        menu_able_count_01=Integer.parseInt(goodsList.getString("menu_count_01"));
+                        menu_able_count_02=Integer.parseInt(goodsList.getString("menu_count_02"));
+                        menu_able_count_03=Integer.parseInt(goodsList.getString("menu_count_03"));
+                        menu_able_count_04=Integer.parseInt(goodsList.getString("menu_count_04"));
+                        menu_able_count_05=Integer.parseInt(goodsList.getString("menu_count_05"));
+                        menu_able_count_06=Integer.parseInt(goodsList.getString("menu_count_06"));
+                        menu_able_count_07=Integer.parseInt(goodsList.getString("menu_count_07"));
+                        menu_able_count_08=Integer.parseInt(goodsList.getString("menu_count_08"));
+                        menu_able_count_09=Integer.parseInt(goodsList.getString("menu_count_09"));
+                        menu_able_count_10=Integer.parseInt(goodsList.getString("menu_count_10"));
+
+                        goodsList.put("menu_count_01",menu_able_count_01-Integer.parseInt(TV_order_count_01.getText().toString()));
+                        goodsList.put("menu_count_02",menu_able_count_02-Integer.parseInt(TV_order_count_02.getText().toString()));
+                        goodsList.put("menu_count_03",menu_able_count_03-Integer.parseInt(TV_order_count_03.getText().toString()));
+                        goodsList.put("menu_count_04",menu_able_count_04-Integer.parseInt(TV_order_count_04.getText().toString()));
+                        goodsList.put("menu_count_05",menu_able_count_05-Integer.parseInt(TV_order_count_05.getText().toString()));
+                        goodsList.put("menu_count_06",menu_able_count_06-Integer.parseInt(TV_order_count_06.getText().toString()));
+                        goodsList.put("menu_count_07",menu_able_count_07-Integer.parseInt(TV_order_count_07.getText().toString()));
+                        goodsList.put("menu_count_08",menu_able_count_08-Integer.parseInt(TV_order_count_08.getText().toString()));
+                        goodsList.put("menu_count_09",menu_able_count_09-Integer.parseInt(TV_order_count_09.getText().toString()));
+                        goodsList.put("menu_count_10",menu_able_count_10-Integer.parseInt(TV_order_count_10.getText().toString()));
+                        editor2.putString("goodsList",goodsList.toString());
+                        editor2.commit();
+
+                    }catch (JSONException e){
+
+                    }
+
+
+
                     finish();
 
 
@@ -253,6 +306,46 @@ public class SelectPaymentActivity extends AppCompatActivity {
                 editor.putString("count", transactionCount+"");
                 editor.putString(PAYMENT_number, transaction.toString());
                 editor.commit();
+
+
+                SharedPreferences pref2 = getSharedPreferences("goodsList", MODE_PRIVATE);
+                SharedPreferences.Editor editor2 = pref2.edit();
+
+                String StringGoodsList = pref2.getString("goodsList","");
+
+
+                try {
+                    JSONObject goodsList = new JSONObject(StringGoodsList);
+
+                    menu_able_count_01=Integer.parseInt(goodsList.getString("menu_count_01"));
+                    menu_able_count_02=Integer.parseInt(goodsList.getString("menu_count_02"));
+                    menu_able_count_03=Integer.parseInt(goodsList.getString("menu_count_03"));
+                    menu_able_count_04=Integer.parseInt(goodsList.getString("menu_count_04"));
+                    menu_able_count_05=Integer.parseInt(goodsList.getString("menu_count_05"));
+                    menu_able_count_06=Integer.parseInt(goodsList.getString("menu_count_06"));
+                    menu_able_count_07=Integer.parseInt(goodsList.getString("menu_count_07"));
+                    menu_able_count_08=Integer.parseInt(goodsList.getString("menu_count_08"));
+                    menu_able_count_09=Integer.parseInt(goodsList.getString("menu_count_09"));
+                    menu_able_count_10=Integer.parseInt(goodsList.getString("menu_count_10"));
+
+                    goodsList.put("menu_count_01",menu_able_count_01-Integer.parseInt(TV_order_count_01.getText().toString()));
+                    goodsList.put("menu_count_02",menu_able_count_02-Integer.parseInt(TV_order_count_02.getText().toString()));
+                    goodsList.put("menu_count_03",menu_able_count_03-Integer.parseInt(TV_order_count_03.getText().toString()));
+                    goodsList.put("menu_count_04",menu_able_count_04-Integer.parseInt(TV_order_count_04.getText().toString()));
+                    goodsList.put("menu_count_05",menu_able_count_05-Integer.parseInt(TV_order_count_05.getText().toString()));
+                    goodsList.put("menu_count_06",menu_able_count_06-Integer.parseInt(TV_order_count_06.getText().toString()));
+                    goodsList.put("menu_count_07",menu_able_count_07-Integer.parseInt(TV_order_count_07.getText().toString()));
+                    goodsList.put("menu_count_08",menu_able_count_08-Integer.parseInt(TV_order_count_08.getText().toString()));
+                    goodsList.put("menu_count_09",menu_able_count_09-Integer.parseInt(TV_order_count_09.getText().toString()));
+                    goodsList.put("menu_count_10",menu_able_count_10-Integer.parseInt(TV_order_count_10.getText().toString()));
+                    editor2.putString("goodsList",goodsList.toString());
+                    editor2.commit();
+
+                }catch (JSONException e){
+
+                }
+
+
                 finish();
 
             }
