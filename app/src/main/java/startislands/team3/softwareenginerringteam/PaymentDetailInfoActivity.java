@@ -116,13 +116,27 @@ public class PaymentDetailInfoActivity extends AppCompatActivity {
 
             case R.id.payment_cancel: // 결제 취소
                 // DB내용 지우기
-                Toast.makeText(PaymentDetailInfoActivity.this, "결제가 취소 되었습니다. ", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(PaymentDetailInfoActivity.this, MainActivity.class));
+                SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+
+
+                try {
+                    PAYMENT_centext.put("PAYMENT_total_price","0");
+                    PAYMENT_centext.put("PAYMENT_sale_price","0");
+                    PAYMENT_centext.put("PAYMENT_method","Card(취소)");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                editor.putString(PAYMENT_number, PAYMENT_centext.toString());
+                editor.commit();
+
+                startActivity(new Intent(PaymentDetailInfoActivity.this, PaymentListInfoActivity.class));
                 finish();
                 break;
 
             case R.id.move_main: // 결제 취소
-                startActivity(new Intent(PaymentDetailInfoActivity.this, MainActivity.class));
+                startActivity(new Intent(PaymentDetailInfoActivity.this, PaymentListInfoActivity.class));
                 finish();
                 break;
 
