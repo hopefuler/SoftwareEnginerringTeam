@@ -22,6 +22,7 @@ public class SaleActivity extends AppCompatActivity {
     int PAYMENT_sale_price=0;
 
     boolean PHONE_SALE_PLAG=false;
+    boolean CUPON_SALE_PLAG=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,45 @@ public class SaleActivity extends AppCompatActivity {
                 SALE_PHONE_NUMBER = salePhoneEdit.getText().toString();
                 if(SALE_PHONE_NUMBER.length()>=10&&PHONE_SALE_PLAG==false){
                     PAYMENT_sale_price=PAYMENT_sale_price+(Integer.parseInt(PAYMENT_total_price)/10);
-                    saleAfter.setText(PAYMENT_total_price+"원");
+                    saleAfter.setText(Integer.parseInt(PAYMENT_total_price)-PAYMENT_sale_price+"원");
+                    PHONE_SALE_PLAG=true;
+                }else if(PHONE_SALE_PLAG){
+                    Toast.makeText(SaleActivity.this, "이미 통신사 할인이 적용되었습니다.", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(SaleActivity.this, "정확한 전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        saleCuponBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SALE_COUPON_NUMBER = saleCuponEdit.getText().toString();
+                if(SALE_COUPON_NUMBER.length()==10&&CUPON_SALE_PLAG==false){
+                    PAYMENT_sale_price=PAYMENT_sale_price+(Integer.parseInt(PAYMENT_total_price)/10);
+                    saleAfter.setText(Integer.parseInt(PAYMENT_total_price)-PAYMENT_sale_price+"원");
+                    CUPON_SALE_PLAG=true;
+                }else if(CUPON_SALE_PLAG){
+                    Toast.makeText(SaleActivity.this, "이미 쿠폰할인이 적용되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(SaleActivity.this, "정확한 쿠폰를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        saleAdmitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saleAdmit();
+            }
+        });
+    }
+
+    public void saleAdmit(){
+        Intent intent = new Intent();
+        intent.putExtra("PAYMENT_sale_price",String.valueOf(PAYMENT_sale_price));
+        setResult(RESULT_OK,intent);
+        finish();
     }
 
 

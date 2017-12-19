@@ -68,11 +68,13 @@
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/signAdmit"
                 android:text="승인"/>
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="취소"/>
+                android:text="취소"
+                android:id="@+id/signCancel"/>
 
         </LinearLayout>
 

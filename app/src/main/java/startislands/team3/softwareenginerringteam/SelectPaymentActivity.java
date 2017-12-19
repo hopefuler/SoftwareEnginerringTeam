@@ -17,6 +17,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
 
     final int CASH_PAYMENT =100;
     final int CARD_PAYMENT =101;
+    final int SALE_PAYMENT=102;
 
     int[] PAYMENT_centext; // 주문 내용  -- 추후에 이 객체를 가져오면될듯
     String PAYMENT_number; // 주문 번호 -> db에서 유동적으로 변화시키기
@@ -49,6 +50,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
     TextView TV_order_price_09;
     TextView TV_order_price_10;
 
+    TextView TV_totalPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
 
 
         //값
-        TextView TV_totalPrice = (TextView)findViewById(R.id.TV_totalPrice);
+        TV_totalPrice = (TextView)findViewById(R.id.TV_totalPrice);
         TV_totalPrice.setText(PAYMENT_total_price+"");
 
         TV_order_count_01 = (TextView)findViewById(R.id.TV_order_count_01);
@@ -138,22 +140,24 @@ public class SelectPaymentActivity extends AppCompatActivity {
     public void payment(View v){ // 결제
         Intent intent = new Intent(SelectPaymentActivity.this, SelectPaymentActivity.class);
         switch (v.getId()) {
-            //case R.id.payment_sale_btn:
-
-                //break;
+            case R.id.payment_sale_btn:
+                intent = new Intent(SelectPaymentActivity.this,SaleActivity.class);
+                intent.putExtra("PAYMENT_total_price",PAYMENT_total_price); // 주문 내용
+                startActivityForResult(intent,SALE_PAYMENT);
+                break;
 
             case R.id.payment_cash_btn: // 현금
                 PAYMENT_method="현금";
 
                 intent = new Intent(SelectPaymentActivity.this, CashPaymentActivity.class);
-                intent.putExtra("PAYMENT_total_price",PAYMENT_total_price); // 주문 내용
+                intent.putExtra("PAYMENT_total_price",Integer.parseInt(PAYMENT_total_price)-Integer.parseInt(PAYMENT_sale_price)+""); // 주문 내용
                 startActivityForResult(intent,CASH_PAYMENT);
 
                 break;
             case R.id.payment_card_btn: // 카드
                 PAYMENT_method="카드";
                 intent = new Intent(SelectPaymentActivity.this, CardPaymentActivity.class);
-                intent.putExtra("PAYMENT_total_price",PAYMENT_total_price); // 주문 내용
+                intent.putExtra("PAYMENT_total_price",Integer.parseInt(PAYMENT_total_price)-Integer.parseInt(PAYMENT_sale_price)+""); // 주문 내용
                 startActivity(intent);
 
                 break;
@@ -197,6 +201,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
                         transaction.put("PAYMENT_time",PAYMENT_time);
                         transaction.put("PAYMENT_sale_price",PAYMENT_sale_price);
                         transaction.put("PAYMENT_number",PAYMENT_number);
+                        transaction.put("PAYMENT_method","Cash");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -206,9 +211,49 @@ public class SelectPaymentActivity extends AppCompatActivity {
                     editor.putString("count", PAYMENT_number);
                     editor.putString(PAYMENT_number, transaction.toString());
                     editor.commit();
+                    finish();
 
 
                 }
+            }else if(requestCode==SALE_PAYMENT){
+                PAYMENT_sale_price = data.getExtras().getString("PAYMENT_sale_price");
+                TV_totalPrice.setText(Integer.parseInt(PAYMENT_total_price)-Integer.parseInt(PAYMENT_sale_price)+"");
+
+            }else if(resultCode==CARD_PAYMENT){
+                SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+
+                int transactionCount=Integer.parseInt(pref.getString("transactionCount", "0"));
+                PAYMENT_number=transactionCount+"";
+
+                JSONObject transaction = new JSONObject();
+                try {
+                    transaction.put("TV_order_count_01",TV_order_count_01.getText().toString());
+                    transaction.put("TV_order_count_02",TV_order_count_02.getText().toString());
+                    transaction.put("TV_order_count_03",TV_order_count_03.getText().toString());
+                    transaction.put("TV_order_count_04",TV_order_count_04.getText().toString());
+                    transaction.put("TV_order_count_05",TV_order_count_05.getText().toString());
+                    transaction.put("TV_order_count_06",TV_order_count_06.getText().toString());
+                    transaction.put("TV_order_count_07",TV_order_count_07.getText().toString());
+                    transaction.put("TV_order_count_08",TV_order_count_08.getText().toString());
+                    transaction.put("TV_order_count_09",TV_order_count_09.getText().toString());
+                    transaction.put("TV_order_count_10",TV_order_count_10.getText().toString());
+                    transaction.put("PAYMENT_total_price",PAYMENT_total_price);
+                    transaction.put("PAYMENT_date",PAYMENT_date);
+                    transaction.put("PAYMENT_time",PAYMENT_time);
+                    transaction.put("PAYMENT_sale_price",PAYMENT_sale_price);
+                    transaction.put("PAYMENT_number",PAYMENT_number);
+                    transaction.put("PAYMENT_method","Card");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                transactionCount++;
+                editor.putString("count", PAYMENT_number);
+                editor.putString(PAYMENT_number, transaction.toString());
+                editor.commit();
+                finish();
+
             }
         }
     }
