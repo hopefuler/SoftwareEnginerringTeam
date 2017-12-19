@@ -77,12 +77,19 @@ public class MainActivity extends AppCompatActivity {
     SimpleDateFormat sdfNowDate;
     SimpleDateFormat sdfNowTime ;
 
+    int toDayYear;
+    int toDayMonth;
+    int toDayDate;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ableOrder();
-        Toast.makeText(this, menu_able_count_01+"", Toast.LENGTH_SHORT).show();
+        toDayYear = Calendar.getInstance().get(YEAR);
+        toDayMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
+        toDayDate = Calendar.getInstance().get(Calendar.DATE);
 
     }
 
@@ -94,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.list_btn: // 거래내역 창
                 startActivity(new Intent(MainActivity.this, PaymentListInfoActivity.class));
-
+                finish();
                 break;
             case R.id.adjust_btn: // 상품관리 창
                 startActivity(new Intent(MainActivity.this, productAdjustActivity.class));
-
+                finish();
                 break;
         }
     }
@@ -115,7 +122,10 @@ public class MainActivity extends AppCompatActivity {
 
         switch (v.getId()) {
             case R.id.order_submit_btn: // 결제창으로 이동
-
+                if(PAYMENT_total_price==0){
+                    Toast.makeText(this, "상품을 선택하십시오.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 PAYMENT_centext = new int[10];
                 PAYMENT_centext[0]=menu_count_01;
                 PAYMENT_centext[1]=menu_count_02;
@@ -127,8 +137,6 @@ public class MainActivity extends AppCompatActivity {
                 PAYMENT_centext[7]=menu_count_08;
                 PAYMENT_centext[8]=menu_count_09;
                 PAYMENT_centext[9]=menu_count_10;
-
-
 
                 PAYMENT_date = sdfNowDate.format(date);
                 PAYMENT_time = sdfNowTime.format(date);
@@ -143,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 // 주문번호 ++ 해서 DB 저장하기.
 
                 startActivity(intent);
-                //finish();
+                finish();
 
                 for(int i=0; i<10 ; i++){
                     TextView order_count = (TextView)findViewById(R.id.TV_order_count_01+i);
@@ -183,28 +191,28 @@ public class MainActivity extends AppCompatActivity {
                 Calendar now = Calendar.getInstance();
 
 
-                goodsList.put("menu_inDate_01",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_02",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_03",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_04",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_05",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_06",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_07",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_08",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_09",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_inDate_10",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_01",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_02",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_03",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_04",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_05",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_06",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_07",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_08",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_09",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_10",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
 
 
-                goodsList.put("menu_outDate_01",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_02",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_03",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_04",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_05",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_06",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_07",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_08",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_09",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
-                goodsList.put("menu_outDate_10",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_01",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_02",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_03",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_04",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_05",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_06",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_07",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_08",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_09",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_10",now.get(YEAR)+"/"+(now.get(Calendar.MONTH)+1)+"/"+now.get(Calendar.DATE));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -276,18 +284,33 @@ public class MainActivity extends AppCompatActivity {
         TextView TV_order_price_10 = (TextView)findViewById(R.id.TV_order_price_10);
 
         TextView TV_totalPrice = (TextView)findViewById(R.id.TV_totalPrice);
-
+        int year, month,date;
+        String tempDate="";
+        String todayTempDate="";
         switch (v.getId()) {
+
             case R.id.BT_plus_01:
-                if(menu_able_count_01>menu_count_01) {
-                    menu_count_01 += 1;
-                    TV_order_count_01.setText(menu_count_01 + "");
-                    menu_price_01 += 2000;
-                    TV_order_price_01.setText(menu_price_01 + "");
+                 year = Integer.parseInt(menu_able_outDate_01.substring(0,4));
+                 month = Integer.parseInt(menu_able_outDate_01.substring(5,7));
+                 date = Integer.parseInt(menu_able_outDate_01.substring(8,10));
+
+                 tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                 todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    if(menu_able_count_01>menu_count_01) {
+                        menu_count_01 += 1;
+                        TV_order_count_01.setText(menu_count_01 + "");
+                        menu_price_01 += 2000;
+                        TV_order_price_01.setText(menu_price_01 + "");
+                    }else{
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
                 }
-                break;
+
             case R.id.BT_minus_01:
                 if(menu_count_01<1)
                     Toast.makeText(this, "더 이상 메뉴를 줄일 수 없습니다.", Toast.LENGTH_SHORT).show();
@@ -300,13 +323,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_02:
-                if(menu_able_count_02>menu_count_02) {
-                    menu_count_02 += 1;
-                    TV_order_count_02.setText(menu_count_02+"");
-                    menu_price_02 += 2800;
-                    TV_order_price_02.setText(menu_price_02+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_02.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_02.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_02.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_02 > menu_count_02) {
+                        menu_count_02 += 1;
+                        TV_order_count_02.setText(menu_count_02 + "");
+                        menu_price_02 += 2800;
+                        TV_order_price_02.setText(menu_price_02 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_02:
@@ -321,13 +355,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_03:
-                if(menu_able_count_03>menu_count_03) {
-                    menu_count_03 += 1;
-                    TV_order_count_03.setText(menu_count_03+"");
-                    menu_price_03 += 2300;
-                    TV_order_price_03.setText(menu_price_03+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_03.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_03.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_03.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_03 > menu_count_03) {
+                        menu_count_03 += 1;
+                        TV_order_count_03.setText(menu_count_03 + "");
+                        menu_price_03 += 2300;
+                        TV_order_price_03.setText(menu_price_03 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_03:
@@ -342,13 +387,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_04:
-                if(menu_able_count_04>menu_count_04) {
-                    menu_count_04 += 1;
-                    TV_order_count_04.setText(menu_count_04+"");
-                    menu_price_04 += 2500;
-                    TV_order_price_04.setText(menu_price_04+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_04.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_04.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_04.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_04 > menu_count_04) {
+                        menu_count_04 += 1;
+                        TV_order_count_04.setText(menu_count_04 + "");
+                        menu_price_04 += 2500;
+                        TV_order_price_04.setText(menu_price_04 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_04:
@@ -363,13 +419,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_05:
-                if(menu_able_count_05>menu_count_05) {
-                    menu_count_05 += 1;
-                    TV_order_count_05.setText(menu_count_05+"");
-                    menu_price_05 += 2500;
-                    TV_order_price_05.setText(menu_price_05+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_05.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_05.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_05.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_05 > menu_count_05) {
+                        menu_count_05 += 1;
+                        TV_order_count_05.setText(menu_count_05 + "");
+                        menu_price_05 += 2500;
+                        TV_order_price_05.setText(menu_price_05 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_05:
@@ -384,13 +451,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_06:
-                if(menu_able_count_06>menu_count_06) {
-                    menu_count_06 += 1;
-                    TV_order_count_06.setText(menu_count_06+"");
-                    menu_price_06 += 3500;
-                    TV_order_price_06.setText(menu_price_06+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_06.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_06.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_06.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_06 > menu_count_06) {
+                        menu_count_06 += 1;
+                        TV_order_count_06.setText(menu_count_06 + "");
+                        menu_price_06 += 3500;
+                        TV_order_price_06.setText(menu_price_06 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_06:
@@ -405,13 +483,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_07:
-                if(menu_able_count_07>menu_count_07) {
-                    menu_count_07 += 1;
-                    TV_order_count_07.setText(menu_count_07+"");
-                    menu_price_07 += 3500;
-                    TV_order_price_07.setText(menu_price_07+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_07.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_07.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_07.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_07 > menu_count_07) {
+                        menu_count_07 += 1;
+                        TV_order_count_07.setText(menu_count_07 + "");
+                        menu_price_07 += 3500;
+                        TV_order_price_07.setText(menu_price_07 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_07:
@@ -426,13 +515,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_08:
-                if(menu_able_count_08>menu_count_08) {
-                    menu_count_08 += 1;
-                    TV_order_count_08.setText(menu_count_08+"");
-                    menu_price_08 += 3800;
-                    TV_order_price_08.setText(menu_price_08+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_08.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_08.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_08.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_08 > menu_count_08) {
+                        menu_count_08 += 1;
+                        TV_order_count_08.setText(menu_count_08 + "");
+                        menu_price_08 += 3800;
+                        TV_order_price_08.setText(menu_price_08 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_08:
@@ -447,13 +547,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_09:
-                if(menu_able_count_09>menu_count_09) {
-                    menu_count_09 += 1;
-                    TV_order_count_09.setText(menu_count_09+"");
-                    menu_price_09 += 500;
-                    TV_order_price_09.setText(menu_price_09+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_09.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_09.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_09.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_09 > menu_count_09) {
+                        menu_count_09 += 1;
+                        TV_order_count_09.setText(menu_count_09 + "");
+                        menu_price_09 += 500;
+                        TV_order_price_09.setText(menu_price_09 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_09:
@@ -468,13 +579,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.BT_plus_10:
-                if(menu_able_count_10>menu_count_10) {
-                    menu_count_10 += 1;
-                    TV_order_count_10.setText(menu_count_10+"");
-                    menu_price_10 += 500;
-                    TV_order_price_10.setText(menu_price_10+"");
-                }else{
-                    Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                year = Integer.parseInt(menu_able_outDate_10.substring(0,4));
+                month = Integer.parseInt(menu_able_outDate_10.substring(5,7));
+                date = Integer.parseInt(menu_able_outDate_10.substring(8,10));
+
+                tempDate = String.valueOf(year)+String.valueOf(month)+String.valueOf(date);
+                todayTempDate = String.valueOf(toDayYear)+String.valueOf(toDayMonth)+String.valueOf(toDayDate);
+
+                if(Integer.parseInt(todayTempDate)>Integer.parseInt(tempDate)){
+                    Toast.makeText(this, "상품의 유통기한을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (menu_able_count_10 > menu_count_10) {
+                        menu_count_10 += 1;
+                        TV_order_count_10.setText(menu_count_10 + "");
+                        menu_price_10 += 500;
+                        TV_order_price_10.setText(menu_price_10 + "");
+                    } else {
+                        Toast.makeText(this, "재고가 부족합니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.BT_minus_10:

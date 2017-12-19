@@ -262,9 +262,11 @@ public class SelectPaymentActivity extends AppCompatActivity {
 
                     }
 
+                    Toast.makeText(this, "현금결제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
 
                     finish();
+                    startActivity(new Intent(SelectPaymentActivity.this,MainActivity.class));
 
 
                 }
@@ -345,8 +347,11 @@ public class SelectPaymentActivity extends AppCompatActivity {
 
                 }
 
+                Toast.makeText(this, "카드결제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+
 
                 finish();
+                startActivity(new Intent(SelectPaymentActivity.this,MainActivity.class));
 
             }
         }
