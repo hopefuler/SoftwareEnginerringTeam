@@ -369,6 +369,13 @@
             android:layout_gravity="center">
 
             <Button
+                android:id="@+id/payment_sale_btn"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:text="세일 처리하기"
+                android:onClick="paymentSubmitClick"/>
+
+            <Button
                 android:id="@+id/payment_cash_btn"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
