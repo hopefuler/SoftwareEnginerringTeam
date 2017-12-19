@@ -1,6 +1,7 @@
 package startislands.team3.softwareenginerringteam;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +9,14 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+
+import static java.util.Calendar.YEAR;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +43,29 @@ public class MainActivity extends AppCompatActivity {
     int menu_price_09= 0;
     int menu_price_10= 0;
 
+    int menu_able_count_01= 0;
+    int menu_able_count_02= 0;
+    int menu_able_count_03= 0;
+    int menu_able_count_04= 0;
+    int menu_able_count_05= 0;
+    int menu_able_count_06= 0;
+    int menu_able_count_07= 0;
+    int menu_able_count_08= 0;
+    int menu_able_count_09= 0;
+    int menu_able_count_10= 0;
+
+    String menu_able_outDate_01="";
+    String menu_able_outDate_02="";
+    String menu_able_outDate_03="";
+    String menu_able_outDate_04="";
+    String menu_able_outDate_05="";
+    String menu_able_outDate_06="";
+    String menu_able_outDate_07="";
+    String menu_able_outDate_08="";
+    String menu_able_outDate_09="";
+    String menu_able_outDate_10="";
+
+
     int PAYMENT_centext[]; // 주문 내용
     int PAYMENT_number = 0 ; // 주문 번호 -> db에서 유동적으로 변화시키기
     String PAYMENT_date; // 주문 일자
@@ -51,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ableOrder();
+        Toast.makeText(this, menu_able_count_01+"", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -125,6 +157,96 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    public void ableOrder(){
+
+        SharedPreferences pref = getSharedPreferences("goodsList", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+
+        String initFlag=pref.getString("goodsList","");
+
+        if(initFlag.equals("")){    //초기값 설정
+            JSONObject goodsList = new JSONObject();
+            try {
+                goodsList.put("menu_count_01","10");
+                goodsList.put("menu_count_02","10");
+                goodsList.put("menu_count_03","10");
+                goodsList.put("menu_count_04","10");
+                goodsList.put("menu_count_05","10");
+                goodsList.put("menu_count_06","10");
+                goodsList.put("menu_count_07","10");
+                goodsList.put("menu_count_08","10");
+                goodsList.put("menu_count_09","10");
+                goodsList.put("menu_count_10","10");
+
+                Calendar now = Calendar.getInstance();
+
+
+                goodsList.put("menu_inDate_01",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_02",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_03",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_04",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_05",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_06",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_07",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_08",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_09",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_inDate_10",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+
+
+                goodsList.put("menu_outDate_01",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_02",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_03",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_04",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_05",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_06",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_07",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_08",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_09",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+                goodsList.put("menu_outDate_10",now.get(YEAR)+"/"+now.get(Calendar.MONTH)+"/"+now.get(Calendar.DATE));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            editor.putString("goodsList",goodsList.toString());
+            editor.commit();
+
+        }
+
+        String StringGoodsList = pref.getString("goodsList","");
+
+        try {
+            JSONObject goodsList = new JSONObject(StringGoodsList);
+            menu_able_count_01=Integer.parseInt(goodsList.getString("menu_count_01"));
+            menu_able_count_02=Integer.parseInt(goodsList.getString("menu_count_02"));
+            menu_able_count_03=Integer.parseInt(goodsList.getString("menu_count_03"));
+            menu_able_count_04=Integer.parseInt(goodsList.getString("menu_count_04"));
+            menu_able_count_05=Integer.parseInt(goodsList.getString("menu_count_05"));
+            menu_able_count_06=Integer.parseInt(goodsList.getString("menu_count_06"));
+            menu_able_count_07=Integer.parseInt(goodsList.getString("menu_count_07"));
+            menu_able_count_08=Integer.parseInt(goodsList.getString("menu_count_08"));
+            menu_able_count_09=Integer.parseInt(goodsList.getString("menu_count_09"));
+            menu_able_count_10=Integer.parseInt(goodsList.getString("menu_count_10"));
+
+
+            menu_able_outDate_01=(goodsList.getString("menu_outDate_01"));
+            menu_able_outDate_02=(goodsList.getString("menu_outDate_02"));
+            menu_able_outDate_03=(goodsList.getString("menu_outDate_03"));
+            menu_able_outDate_04=(goodsList.getString("menu_outDate_04"));
+            menu_able_outDate_05=(goodsList.getString("menu_outDate_05"));
+            menu_able_outDate_06=(goodsList.getString("menu_outDate_06"));
+            menu_able_outDate_07=(goodsList.getString("menu_outDate_07"));
+            menu_able_outDate_08=(goodsList.getString("menu_outDate_08"));
+            menu_able_outDate_09=(goodsList.getString("menu_outDate_09"));
+            menu_able_outDate_10=(goodsList.getString("menu_outDate_10"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void countAdjustClick(View v) { // 수정 버튼
         orderAdjust(v); // 주문수정
