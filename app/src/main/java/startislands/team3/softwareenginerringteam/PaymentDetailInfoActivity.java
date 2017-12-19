@@ -123,7 +123,7 @@ public class PaymentDetailInfoActivity extends AppCompatActivity {
                 try {
                     PAYMENT_centext.put("PAYMENT_total_price","0");
                     PAYMENT_centext.put("PAYMENT_sale_price","0");
-                    PAYMENT_centext.put("PAYMENT_method","Card(취소)");
+                    PAYMENT_centext.put("PAYMENT_method","(결제 취소)");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
