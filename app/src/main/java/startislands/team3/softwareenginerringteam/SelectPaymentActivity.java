@@ -138,9 +138,9 @@ public class SelectPaymentActivity extends AppCompatActivity {
     public void payment(View v){ // 결제
         Intent intent = new Intent(SelectPaymentActivity.this, SelectPaymentActivity.class);
         switch (v.getId()) {
-            case R.id.payment_sale_btn:
+            //case R.id.payment_sale_btn:
 
-                break;
+                //break;
 
             case R.id.payment_cash_btn: // 현금
                 PAYMENT_method="현금";
