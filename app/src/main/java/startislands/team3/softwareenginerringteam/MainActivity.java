@@ -119,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                     TextView order_price = (TextView)findViewById(R.id.TV_order_price_01+i);
                     order_price.setText("0");
                 }
+                TextView TV_totalPrice = (TextView)findViewById(R.id.TV_totalPrice);
+                TV_totalPrice.setText("0");
 
                 break;
         }
