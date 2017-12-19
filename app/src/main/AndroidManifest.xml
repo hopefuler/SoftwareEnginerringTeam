@@ -24,6 +24,8 @@
         <activity android:name=".CheckCheck" />
         <activity android:name=".PaymentListInfoActivity" />
         <activity android:name=".PaymentDetailInfoActivity"></activity>
+        <activity android:name=".CheckCheck" />
+        <activity android:name=".SaleActivity"></activity>
     </application>
 
 </manifest>

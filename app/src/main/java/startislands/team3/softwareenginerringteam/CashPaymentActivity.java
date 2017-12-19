@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 
@@ -89,15 +90,13 @@ public class CashPaymentActivity extends AppCompatActivity {
     public void paymentCash(View v){ // 현금 결제
         switch (v.getId()) {
             case R.id.payment_cash_btn:
-
-                //거래내역 저장
-                SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString(String.valueOf(0), String.valueOf(123));
-                editor.putString(String.valueOf(1), String.valueOf(566781065));
-                editor.commit();
-
-                break;
+                if(Integer.parseInt(PAYMENT_total_price)<=PAYMENT_receive_price){
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK,intent);
+                    finish();
+                }else{
+                    Toast.makeText(this, "현금이 부족합니다.", Toast.LENGTH_SHORT).show();
+                }
         }
     }
 
