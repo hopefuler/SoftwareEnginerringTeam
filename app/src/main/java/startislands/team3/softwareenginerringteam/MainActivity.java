@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void topButtonClick(View v) {
@@ -59,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.list_btn: // 거래내역 창
-
-
+                startActivity(new Intent(MainActivity.this, PaymentListInfoActivity.class));
+                finish();
                 break;
             case R.id.adjust_btn: // 상품관리 창
 

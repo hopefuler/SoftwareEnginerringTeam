@@ -44,12 +44,13 @@ public class CashPaymentActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 EditText ET_receivePrice = (EditText)findViewById(R.id.ET_receivePrice);
-                PAYMENT_receive_price = Integer.parseInt(ET_receivePrice.getText().toString());
 
                 if(ET_receivePrice.getText().toString().equals("")){
-                    exchange = -Integer.parseInt(PAYMENT_total_price);
+                    exchange = 0;
                 }
                 else{
+                    PAYMENT_receive_price = Integer.parseInt(ET_receivePrice.getText().toString());
+
                     exchange = PAYMENT_receive_price - Integer.parseInt(PAYMENT_total_price);
                 }
 
