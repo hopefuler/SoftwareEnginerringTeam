@@ -30,6 +30,8 @@ public class SelectPaymentActivity extends AppCompatActivity {
         PAYMENT_total_price = intent.getExtras().getString("PAYMENT_total_price"); // 주문 총액
         PAYMENT_time = intent.getExtras().getString("PAYMENT_time"); // 주문 시간
 
+
+        //값
         TextView TV_totalPrice = (TextView)findViewById(R.id.TV_totalPrice);
         TV_totalPrice.setText(PAYMENT_total_price+"");
 
@@ -110,8 +112,6 @@ public class SelectPaymentActivity extends AppCompatActivity {
                 intent = new Intent(SelectPaymentActivity.this, CashPaymentActivity.class);
                 intent.putExtra("PAYMENT_total_price",PAYMENT_total_price); // 주문 내용
 
-
-
                 break;
             case R.id.payment_card_btn: // 카드
                 PAYMENT_method="카드";
@@ -120,13 +120,10 @@ public class SelectPaymentActivity extends AppCompatActivity {
 
                 break;
             case R.id.payment_cheque_btn: // 수표
-
-
+                intent = new Intent(SelectPaymentActivity.this, CheckCheck.class);
                 break;
         }
-
         startActivity(intent);
-        finish();
     }
 
     public void paymentCancel(){ // 결제 취소

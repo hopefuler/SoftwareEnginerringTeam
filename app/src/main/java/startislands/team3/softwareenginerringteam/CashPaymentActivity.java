@@ -1,6 +1,7 @@
 package startislands.team3.softwareenginerringteam;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import org.json.JSONArray;
 
 public class CashPaymentActivity extends AppCompatActivity {
 
@@ -85,7 +88,13 @@ public class CashPaymentActivity extends AppCompatActivity {
     public void paymentCash(View v){ // 현금 결제
         switch (v.getId()) {
             case R.id.payment_cash_btn:
-                    // 결제 완료 코드
+
+                //거래내역 저장
+                SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString(String.valueOf(0), String.valueOf(123));
+                editor.putString(String.valueOf(1), String.valueOf(566781065));
+                editor.commit();
 
                 break;
         }

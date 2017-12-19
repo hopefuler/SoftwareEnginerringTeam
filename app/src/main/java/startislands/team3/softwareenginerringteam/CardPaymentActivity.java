@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class CardPaymentActivity extends AppCompatActivity {
 
@@ -12,6 +13,7 @@ public class CardPaymentActivity extends AppCompatActivity {
     int checkNumber; // 승인번호
     int checktDate; // 승인일자
     String PAYMENT_total_price; // 주문 총액
+    TextView TV_totalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,8 @@ public class CardPaymentActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         PAYMENT_total_price = intent.getExtras().getString("PAYMENT_total_price"); // 주문 총액
+        TV_totalPrice = (TextView)findViewById(R.id.TV_totalPrice);
+        TV_totalPrice.setText(PAYMENT_total_price);
 
     }
 
@@ -45,14 +49,15 @@ public class CardPaymentActivity extends AppCompatActivity {
     public void cashPaymentSubmitClick(View v) {
         switch (v.getId()) {
             case R.id.cash_payment_yes_btn:
+
                 startActivity(new Intent(CardPaymentActivity.this, SignActivity.class));
-                finish();
+
 
                 break;
 
             case R.id.cash_payment_no_btn:
-                startActivity(new Intent(CardPaymentActivity.this, MainActivity.class));
                 finish();
+
                 break;
         }
     }

@@ -19,7 +19,9 @@
         <activity android:name=".SelectPaymentActivity" />
         <activity android:name=".CashPaymentActivity" />
         <activity android:name=".CardPaymentActivity" />
-        <activity android:name=".SignActivity"></activity>
+        <activity android:name=".SignActivity" />
+        <activity android:name=".TransactionDetails" />
+        <activity android:name=".CheckCheck"></activity>
     </application>
 
 </manifest>
