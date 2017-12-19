@@ -199,37 +199,6 @@ public class productAdjustActivity extends AppCompatActivity {
             case R.id.menu_count_10:
                 AdjustBtn = (Button)findViewById(R.id.menu_count_10);
                 break;
-
-            case R.id.menu_kind_01:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_01);
-                break;
-            case R.id.menu_kind_02:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_02);
-                break;
-            case R.id.menu_kind_03:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_03);
-                break;
-            case R.id.menu_kind_04:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_04);
-                break;
-            case R.id.menu_kind_05:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_05);
-                break;
-            case R.id.menu_kind_06:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_06);
-                break;
-            case R.id.menu_kind_07:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_07);
-                break;
-            case R.id.menu_kind_08:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_08);
-                break;
-            case R.id.menu_kind_09:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_09);
-                break;
-            case R.id.menu_kind_10:
-                AdjustBtn = (Button)findViewById(R.id.menu_kind_10);
-                break;
         }
 
         if(v.getId()==R.id.menu_count_01 || v.getId()==R.id.menu_count_02 || v.getId()==R.id.menu_count_03 ||
@@ -242,15 +211,6 @@ public class productAdjustActivity extends AppCompatActivity {
             }
         }
 
-        if(v.getId()==R.id.menu_kind_01 || v.getId()==R.id.menu_kind_02 || v.getId()==R.id.menu_kind_03 ||
-                v.getId()==R.id.menu_kind_04 || v.getId()==R.id.menu_kind_05 || v.getId()==R.id.menu_kind_06 ||
-                v.getId()==R.id.menu_kind_07 || v.getId()==R.id.menu_kind_08 || v.getId()==R.id.menu_kind_09 ||
-                v.getId()==R.id.menu_kind_10) {
-            if (AdjustBuffer.length()>5){
-                Toast.makeText(this, "5자 이하로 입력해주세요.", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
         AdjustBtn.setText(AdjustBuffer);
     }
 
