@@ -116,7 +116,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_01"
                     android:layout_marginLeft="2dp"
@@ -125,7 +126,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_01"
                     android:layout_marginLeft="2dp"
@@ -134,7 +136,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_01"
                     android:layout_marginLeft="2dp"
@@ -143,7 +146,8 @@
                     android:layout_height="35dp"
                     android:text="커피"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -166,7 +170,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_02"
                     android:layout_marginLeft="2dp"
@@ -175,7 +180,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_02"
                     android:layout_marginLeft="2dp"
@@ -184,7 +190,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_02"
                     android:layout_marginLeft="2dp"
@@ -193,7 +200,8 @@
                     android:layout_height="35dp"
                     android:text="라떼"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -207,7 +215,8 @@
                     android:text="카페라떼"
                     android:gravity="center"
                     android:textSize="10dp"
-                    android:textColor="#000000"/>
+                    android:textColor="#000000"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_count_03"
                     android:layout_marginLeft="2dp"
@@ -216,7 +225,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_03"
                     android:layout_marginLeft="2dp"
@@ -225,7 +235,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_03"
                     android:layout_marginLeft="2dp"
@@ -234,7 +245,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_03"
                     android:layout_marginLeft="2dp"
@@ -243,7 +255,8 @@
                     android:layout_height="35dp"
                     android:text="라떼"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -266,7 +279,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_04"
                     android:layout_marginLeft="2dp"
@@ -275,7 +289,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_04"
                     android:layout_marginLeft="2dp"
@@ -284,7 +299,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_04"
                     android:layout_marginLeft="2dp"
@@ -293,7 +309,8 @@
                     android:layout_height="35dp"
                     android:text="라떼"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -316,7 +333,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_05"
                     android:layout_marginLeft="2dp"
@@ -325,7 +343,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_05"
                     android:layout_marginLeft="2dp"
@@ -334,7 +353,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_05"
                     android:layout_marginLeft="2dp"
@@ -343,7 +363,8 @@
                     android:layout_height="35dp"
                     android:text="라떼"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -366,7 +387,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_06"
                     android:layout_marginLeft="2dp"
@@ -375,7 +397,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_06"
                     android:layout_marginLeft="2dp"
@@ -384,7 +407,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_06"
                     android:layout_marginLeft="2dp"
@@ -393,7 +417,8 @@
                     android:layout_height="35dp"
                     android:text="에이드"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -416,7 +441,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_07"
                     android:layout_marginLeft="2dp"
@@ -425,7 +451,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_07"
                     android:layout_marginLeft="2dp"
@@ -434,7 +461,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_07"
                     android:layout_marginLeft="2dp"
@@ -443,7 +471,8 @@
                     android:layout_height="35dp"
                     android:text="에이드"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -466,7 +495,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_08"
                     android:layout_marginLeft="2dp"
@@ -475,7 +505,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_08"
                     android:layout_marginLeft="2dp"
@@ -484,7 +515,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_08"
                     android:layout_marginLeft="2dp"
@@ -493,7 +525,8 @@
                     android:layout_height="35dp"
                     android:text="우유"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -516,7 +549,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_09"
                     android:layout_marginLeft="2dp"
@@ -525,7 +559,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_09"
                     android:layout_marginLeft="2dp"
@@ -534,7 +569,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_09"
                     android:layout_marginLeft="2dp"
@@ -543,7 +579,8 @@
                     android:layout_height="35dp"
                     android:text="생크림"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -554,7 +591,7 @@
                     android:layout_marginRight="2dp"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="아메리카노"
+                    android:text="샷 추가"
                     android:gravity="center"
                     android:textSize="10dp"
                     android:textColor="#000000"/>
@@ -566,7 +603,8 @@
                     android:layout_height="35dp"
                     android:text="99"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
                 <Button
                     android:id="@+id/menu_inDate_10"
                     android:layout_marginLeft="2dp"
@@ -575,7 +613,8 @@
                     android:layout_height="35dp"
                     android:text="2017/12/01"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_outDate_10"
                     android:layout_marginLeft="2dp"
@@ -584,7 +623,8 @@
                     android:layout_height="35dp"
                     android:text="2018/10/21"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="dateClick"/>
                 <Button
                     android:id="@+id/menu_kind_10"
                     android:layout_marginLeft="2dp"
@@ -593,7 +633,8 @@
                     android:layout_height="35dp"
                     android:text="샷"
                     android:gravity="center"
-                    android:textSize="10dp"/>
+                    android:textSize="10dp"
+                    android:onClick="AddAdjustClick"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
