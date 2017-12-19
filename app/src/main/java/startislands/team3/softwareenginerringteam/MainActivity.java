@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.adjust_btn: // 상품관리 창
-
-
+                startActivity(new Intent(MainActivity.this, productAdjustActivity.class));
+                finish();
                 break;
         }
     }

@@ -35,12 +35,12 @@ public class CardPaymentActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.list_btn: // 거래내역 창
-
-
+                startActivity(new Intent(CardPaymentActivity.this, PaymentListInfoActivity.class));
+                finish();
                 break;
             case R.id.adjust_btn: // 상품관리 창
-
-
+                startActivity(new Intent(CardPaymentActivity.this, productAdjustActivity.class));
+                finish();
                 break;
         }
     }

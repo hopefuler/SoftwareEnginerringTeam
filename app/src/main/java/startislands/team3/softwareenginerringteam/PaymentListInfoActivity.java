@@ -66,8 +66,8 @@ public class PaymentListInfoActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.adjust_btn: // 상품관리 창
-
-
+                startActivity(new Intent(PaymentListInfoActivity.this, productAdjustActivity.class));
+                finish();
                 break;
         }
     }

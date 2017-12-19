@@ -114,15 +114,16 @@ public class SelectPaymentActivity extends AppCompatActivity {
     public void topButtonClick(View v) {
         switch (v.getId()) {
             case R.id.order_btn: // 주문 창
-                paymentCancel(); // 결제 취소
+                startActivity(new Intent(SelectPaymentActivity.this, MainActivity.class));
+                finish();
                 break;
             case R.id.list_btn: // 거래내역 창
-
-
+                startActivity(new Intent(SelectPaymentActivity.this, PaymentListInfoActivity.class));
+                finish();
                 break;
             case R.id.adjust_btn: // 상품관리 창
-
-
+                startActivity(new Intent(SelectPaymentActivity.this, productAdjustActivity.class));
+                finish();
                 break;
         }
     }
@@ -140,6 +141,7 @@ public class SelectPaymentActivity extends AppCompatActivity {
             case R.id.payment_sale_btn:
 
                 break;
+
             case R.id.payment_cash_btn: // 현금
                 PAYMENT_method="현금";
 

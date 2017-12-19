@@ -68,15 +68,16 @@ public class CashPaymentActivity extends AppCompatActivity {
     public void topButtonClick(View v) {
         switch (v.getId()) {
             case R.id.order_btn: // 주문 창
-                paymentCashCancel(); // 현금 결제 취소
+                startActivity(new Intent(CashPaymentActivity.this, MainActivity.class));
+                finish();
                 break;
             case R.id.list_btn: // 거래내역 창
-
-
+                startActivity(new Intent(CashPaymentActivity.this, PaymentListInfoActivity.class));
+                finish();
                 break;
             case R.id.adjust_btn: // 상품관리 창
-
-
+                startActivity(new Intent(CashPaymentActivity.this, productAdjustActivity.class));
+                finish();
                 break;
         }
     }

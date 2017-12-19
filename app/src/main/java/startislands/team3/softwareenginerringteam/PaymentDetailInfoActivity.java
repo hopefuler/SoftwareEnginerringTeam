@@ -3,7 +3,10 @@ package startislands.team3.softwareenginerringteam;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PaymentDetailInfoActivity extends AppCompatActivity {
 
@@ -28,7 +31,6 @@ public class PaymentDetailInfoActivity extends AppCompatActivity {
         PAYMENT_date = intent.getExtras().getString("PAYMENT_date");
         PAYMENT_number = intent.getExtras().getString("PAYMENT_number");
 
-
         TextView pdi_totalprice = (TextView)findViewById(R.id.pdi_totalprice);
         TextView pdi_method = (TextView)findViewById(R.id.pdi_method);
         TextView pdi_time = (TextView)findViewById(R.id.pdi_time);
@@ -39,14 +41,29 @@ public class PaymentDetailInfoActivity extends AppCompatActivity {
         pdi_time.setText(PAYMENT_time);
         pdi_date.setText(PAYMENT_date);
 
+    }
+    public void pdiClick(View v){
 
+        switch(v.getId()){
 
+            case R.id.print_detail_list: // 영수증 출력
+                Toast.makeText(PaymentDetailInfoActivity.this, "영수증이 출력되었습니다.", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.payment_cancel: // 결제 취소
+                // DB내용 지우기
+                Toast.makeText(PaymentDetailInfoActivity.this, "결제가 취소 되었습니다. ", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(PaymentDetailInfoActivity.this, MainActivity.class));
+                finish();
+                break;
+
+            case R.id.move_main: // 결제 취소
+                startActivity(new Intent(PaymentDetailInfoActivity.this, MainActivity.class));
+                finish();
+                break;
+
+        }
 
 
     }
-
-
-
-
-
 }
