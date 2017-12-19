@@ -10,11 +10,12 @@ import android.widget.Toast;
 
 public class PaymentListInfoActivity extends AppCompatActivity {
 
-    String PAYMENT_time = "20:28:59"; // 거래 시간
-    String PAYMENT_method = "현금 결제"; // 거래 방식
-    String PAYMENT_total_price = "2000"; // 거래 내용
-    String PAYMENT_date = "2017/12/12"; // 거래 날짜
-    String PAYMENT_number = "20171212001"; // 거래 일련번호
+    String PAYMENT_time; // 거래 시간
+    String PAYMENT_method; // 거래 방식
+    String PAYMENT_centext=""; // 거래 내용
+    String PAYMENT_date; // 거래 날짜
+    String PAYMENT_number; // 거래 일련번호
+    String PAYMENT_total_price; // 거래 총액
 
     MyAdapter MyAdapter;
     private ListView mListView;
@@ -27,13 +28,26 @@ public class PaymentListInfoActivity extends AppCompatActivity {
         MyAdapter = new MyAdapter();
         mListView = (ListView)findViewById(R.id.stu_listView);
 
-        setListView(); // 거래내역 상세조회
+        setListView(); // 거래내역 조회
+
+        // 거래내역 수정 ?? -> 뺄 것 상세보기에서 할 일임.
+
+        // 영수증 출력 ?? -> 뺄 것 상세보기에서 할 일임.
+
+        // 결제 취소 ?? -> 뺄 것 상세보기에서 할 일임.
+
 
         /*리스트뷰 버튼을 눌럿을때의 이벤트리스너 설정*/
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent1, View view, int position, long id) {
+
+                detailListView(); // 거래내역 조회 ; 이 함수를 호출 할 것. - 클래스 다이어그램
+
                 Toast.makeText(PaymentListInfoActivity.this, position+"번 리스트 뷰", Toast.LENGTH_SHORT).show();
+
+
+
 
             }
         });
@@ -75,6 +89,18 @@ public class PaymentListInfoActivity extends AppCompatActivity {
         MyAdapter.addItem(PAYMENT_number, PAYMENT_date, PAYMENT_time, PAYMENT_method, PAYMENT_total_price);
 
         mListView.setAdapter(MyAdapter);
+    }
 
+    public void detailListView(){ // 거래내역 상세조회
+        Intent intent = new Intent(PaymentListInfoActivity.this, PaymentDetailInfoActivity.class);
+
+        intent.putExtra("PAYMENT_centext",PAYMENT_centext);
+        intent.putExtra("PAYMENT_time",PAYMENT_time);
+        intent.putExtra("PAYMENT_method",PAYMENT_method);
+        intent.putExtra("PAYMENT_total_price",PAYMENT_total_price);
+        intent.putExtra("PAYMENT_date",PAYMENT_date);
+        intent.putExtra("PAYMENT_number",PAYMENT_number);
+        startActivity(intent);
+        finish();
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="startislands.team3.softwareenginerringteam">
 
     <application
@@ -24,7 +25,6 @@
         <activity android:name=".CheckCheck" />
         <activity android:name=".PaymentListInfoActivity" />
         <activity android:name=".PaymentDetailInfoActivity"></activity>
-        <activity android:name=".CheckCheck" />
         <activity android:name=".SaleActivity"></activity>
     </application>
 
