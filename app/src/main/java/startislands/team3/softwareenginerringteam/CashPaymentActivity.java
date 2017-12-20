@@ -96,7 +96,7 @@ public class CashPaymentActivity extends AppCompatActivity {
                     setResult(RESULT_OK,intent);
                     finish();
                 }else{
-                    Toast.makeText(this, "현금이 부족합니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "받은 금액이 부족합니다.", Toast.LENGTH_SHORT).show();
                 }
         }
     }

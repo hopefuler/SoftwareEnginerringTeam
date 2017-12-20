@@ -118,7 +118,12 @@ public class PaymentDetailInfoActivity extends AppCompatActivity {
                 // DB내용 지우기
                 SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
-
+                
+                if(PAYMENT_method.equals("(결제 취소)")){
+                    Toast.makeText(this, "이미 결제 취소 완료된 품목입니다.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(PaymentDetailInfoActivity.this, PaymentListInfoActivity.class));
+                    finish();
+                }
 
                 try {
                     PAYMENT_centext.put("PAYMENT_total_price","0");

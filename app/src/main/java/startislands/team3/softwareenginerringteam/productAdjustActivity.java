@@ -309,20 +309,7 @@ public class productAdjustActivity extends AppCompatActivity {
 
 
 
-                SharedPreferences pref = getSharedPreferences("goodsList", MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
 
-                String StringGoodsList = pref.getString("goodsList","");
-
-                try {
-                    JSONObject goodsList = new JSONObject(StringGoodsList);
-                    goodsList.put(temp,AdjustBuffer);
-                    editor.putString("goodsList",goodsList.toString());
-                    editor.commit();
-
-                }catch (JSONException e){
-
-                }
             }
         });
 
@@ -378,6 +365,21 @@ public class productAdjustActivity extends AppCompatActivity {
             if (Integer.parseInt(AdjustBuffer) > 99){
                 Toast.makeText(this, "99이하로 입력해주세요.", Toast.LENGTH_SHORT).show();
                 return;
+            }else{
+                SharedPreferences pref = getSharedPreferences("goodsList", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+
+                String StringGoodsList = pref.getString("goodsList","");
+
+                try {
+                    JSONObject goodsList = new JSONObject(StringGoodsList);
+                    goodsList.put(temp,AdjustBuffer);
+                    editor.putString("goodsList",goodsList.toString());
+                    editor.commit();
+
+                }catch (JSONException e){
+
+                }
             }
         }
 

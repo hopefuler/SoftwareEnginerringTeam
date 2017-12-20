@@ -79,7 +79,11 @@ public class PaymentListInfoActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
         int transactionListCount = Integer.parseInt(pref.getString("count","0"));
 
-
+        if(transactionListCount==0){
+            Toast.makeText(this, "POS내에 거래내역이 없습니다.", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(PaymentListInfoActivity.this, MainActivity.class));
+            finish();
+        }
         for(int i=0;i<transactionListCount;i++){
             String JSONString = pref.getString(String.valueOf(i),"");
 
