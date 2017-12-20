@@ -53,13 +53,11 @@ public class CardPaymentActivity extends AppCompatActivity {
     public void cashPaymentSubmitClick(View v) {
         switch (v.getId()) {
             case R.id.cash_payment_yes_btn:
-
                 startActivityForResult(new Intent(CardPaymentActivity.this, SignActivity.class),CARD_SIGN);
                 break;
 
             case R.id.cash_payment_no_btn:
                 finish();
-
                 break;
         }
     }

@@ -1,10 +1,13 @@
 package startislands.team3.softwareenginerringteam;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +16,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PaymentDetailInfoActivity extends AppCompatActivity {
+
+
+    TextView etEdit;
+    AlertDialog.Builder dialog ;
 
     String PAYMENT_time; // 거래 시간
     String PAYMENT_method; // 거래 방식
@@ -115,29 +122,54 @@ public class PaymentDetailInfoActivity extends AppCompatActivity {
                 break;
 
             case R.id.payment_cancel: // 결제 취소
-                // DB내용 지우기
-                SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
-                
-                if(PAYMENT_method.equals("(결제 취소)")){
-                    Toast.makeText(this, "이미 결제 취소 완료된 품목입니다.", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(PaymentDetailInfoActivity.this, PaymentListInfoActivity.class));
-                    finish();
-                }
+                etEdit = new TextView(this);
+                dialog = new AlertDialog.Builder(PaymentDetailInfoActivity.this);
+                dialog.setTitle("카드를 인식시켜주세요.");
+                dialog.setView(etEdit);
+                etEdit.setText("0000 - 0000 - 0000 - 0000");
+                etEdit.setPadding(100,100,100,100);
 
-                try {
-                    PAYMENT_centext.put("PAYMENT_total_price","0");
-                    PAYMENT_centext.put("PAYMENT_sale_price","0");
-                    PAYMENT_centext.put("PAYMENT_method","(결제 취소)");
+                // OK 버튼 이벤트
+                dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                editor.putString(PAYMENT_number, PAYMENT_centext.toString());
-                editor.commit();
+                        // DB내용 지우기
+                        SharedPreferences pref = getSharedPreferences("transactionList", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
 
-                startActivity(new Intent(PaymentDetailInfoActivity.this, PaymentListInfoActivity.class));
-                finish();
+                        if(PAYMENT_method.equals("(결제 취소)")){
+                            Toast.makeText(PaymentDetailInfoActivity.this, "이미 결제 취소 완료된 품목입니다.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(PaymentDetailInfoActivity.this, PaymentListInfoActivity.class));
+                            finish();
+                        }
+
+                        try {
+                            PAYMENT_centext.put("PAYMENT_total_price","0");
+                            PAYMENT_centext.put("PAYMENT_sale_price","0");
+                            PAYMENT_centext.put("PAYMENT_method","(결제 취소)");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        editor.putString(PAYMENT_number, PAYMENT_centext.toString());
+                        editor.commit();
+
+                        startActivity(new Intent(PaymentDetailInfoActivity.this, PaymentListInfoActivity.class));
+                        finish();
+
+                        Toast.makeText(PaymentDetailInfoActivity.this, "결제취소 완료", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+                // Cancel 버튼 이벤트
+                dialog.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                dialog.show();
                 break;
 
             case R.id.move_main: // 결제 취소
